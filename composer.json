@@ -27,6 +27,13 @@
     {
       "type": "composer",
       "url": "https://wpackagist.org"
+    },
+    {
+      "type": "path",
+      "url": "web/app/custom/plugins/*",
+      "options": {
+        "symlink":true
+      }
     }
   ],
   "require": {
@@ -56,6 +63,7 @@
     "wpackagist-plugin/wordpress-seo": "^23.2",
     "wpackagist-plugin/mailin": "^3.1",
     "wpackagist-plugin/nexter-extension": "^3.2",
+    "elisegrace/elementor-pro": "*",
     "wpackagist-plugin/the-plus-addons-for-elementor-page-builder": "^5.6.2"
   },
   "require-dev": {
