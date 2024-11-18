@@ -48,7 +48,7 @@ class Add_To_Cart extends Widget_Button {
 	 * @return array Widget style dependencies.
 	 */
 	public function get_style_depends(): array {
-		return [ 'widget-woocommerce-product-add-to-cart' ];
+		return [ 'widget-woocommerce' ];
 	}
 
 	public function on_export( $element ) {

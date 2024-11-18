@@ -40,7 +40,7 @@ class Product_Add_To_Cart extends Base_Widget {
 	 * @return array Widget style dependencies.
 	 */
 	public function get_style_depends(): array {
-		return [ 'widget-woocommerce-product-add-to-cart' ];
+		return [ 'widget-woocommerce' ];
 	}
 
 	protected function render() {

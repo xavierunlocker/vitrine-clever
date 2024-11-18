@@ -40,7 +40,7 @@ class Breadcrumbs extends Base {
 	 * @return array Widget style dependencies.
 	 */
 	public function get_style_depends(): array {
-		return [ 'widget-breadcrumbs' ];
+		return [ 'widget-theme-elements' ];
 	}
 
 	public function get_keywords() {

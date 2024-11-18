@@ -39,7 +39,7 @@ class Product_Price extends Base_Widget {
 	 * @return array Widget style dependencies.
 	 */
 	public function get_style_depends(): array {
-		return [ 'widget-woocommerce-product-price' ];
+		return [ 'widget-woocommerce' ];
 	}
 
 	protected function register_controls() {

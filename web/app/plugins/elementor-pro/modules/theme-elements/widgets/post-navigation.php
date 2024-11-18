@@ -48,7 +48,7 @@ class Post_Navigation extends Base {
 	 * @return array Widget style dependencies.
 	 */
 	public function get_style_depends(): array {
-		return [ 'widget-post-navigation' ];
+		return [ 'widget-theme-elements' ];
 	}
 
 	protected function register_controls() {

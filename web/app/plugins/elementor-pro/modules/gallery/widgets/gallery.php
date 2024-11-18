@@ -44,7 +44,7 @@ class Gallery extends Base_Widget {
 	}
 
 	public function get_style_depends(): array {
-		return [ 'widget-gallery', 'elementor-gallery', 'e-transitions' ];
+		return [ 'widget-gallery', 'elementor-gallery' ];
 	}
 
 	public function get_icon() {

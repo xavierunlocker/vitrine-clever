@@ -2514,12 +2514,16 @@ class Mega_Menu extends Widget_Nested_Base {
 	}
 
 	protected function get_initial_config(): array {
-		return array_merge( parent::get_initial_config(), [
-			'support_improved_repeaters' => true,
-			'target_container' => [ '.e-n-menu-heading' ],
-			'node' => 'li',
-			'is_interlaced' => true,
-		] );
+		if ( Plugin::elementor()->experiments->is_feature_active( 'e_nested_atomic_repeaters' ) ) {
+			return array_merge( parent::get_initial_config(), [
+				'support_improved_repeaters' => true,
+				'target_container' => [ '.e-n-menu-heading' ],
+				'node' => 'li',
+				'is_interlaced' => true,
+			] );
+		}
+
+		return parent::get_initial_config();
 	}
 
 	// Any update in this function should be updated also in the content_template function too

@@ -82,8 +82,6 @@ module.exports = window["wp"]["i18n"];
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-!function() {
 /*!*************************************************************!*\
   !*** ./node_modules/@elementor/editor-notes/dist/index.mjs ***!
   \*************************************************************/
@@ -110,12 +108,15 @@ function useNotesActionProps() {
       const extendedWindow = window;
       const config = extendedWindow?.elementor?.editorEvents?.config;
       if (config) {
-        extendedWindow.elementor.editorEvents.dispatchEvent(config.names.topBar.notes, {
-          location: config.locations.topBar,
-          secondaryLocation: config.secondaryLocations.notes,
-          trigger: config.triggers.toggleClick,
-          element: config.elements.buttonIcon
-        });
+        extendedWindow.elementor.editorEvents.dispatchEvent(
+          config.names.topBar.notes,
+          {
+            location: config.locations.topBar,
+            secondaryLocation: config.secondaryLocations.notes,
+            trigger: config.triggers.toggleClick,
+            element: config.elements.buttonIcon
+          }
+        );
       }
       (0,_elementor_editor_v1_adapters__WEBPACK_IMPORTED_MODULE_2__.__privateRunCommand)("notes/toggle");
     },
@@ -136,7 +137,6 @@ function init() {
 // src/index.ts
 init();
 //# sourceMappingURL=index.mjs.map
-}();
 (window.elementorV2 = window.elementorV2 || {}).editorNotes = __webpack_exports__;
 /******/ })()
 ;

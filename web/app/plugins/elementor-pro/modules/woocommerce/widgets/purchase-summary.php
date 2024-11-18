@@ -50,7 +50,7 @@ class Purchase_Summary extends Base_Widget {
 	 * @return array Widget style dependencies.
 	 */
 	public function get_style_depends(): array {
-		return [ 'widget-woocommerce-purchase-summary' ];
+		return [ 'widget-woocommerce' ];
 	}
 
 	protected function register_controls() {
