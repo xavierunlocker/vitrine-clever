@@ -1,0 +1,22 @@
+{
+  "name": "elisegrace/elementor-pro",
+  "description": "",
+  "keywords": [
+    "wordpress",
+    "plugin"
+  ],
+  "homepage": "https://anyproject.com",
+  "authors": [
+    {
+      "name": "Any Author",
+      "homepage": "https://Author.com"
+    }
+  ],
+  "version": "1.0.0",
+  "type": "wordpress-plugin",
+  "require": {
+    "php": "^8.0",
+    "composer/installers": "^2.0",
+    "johnpbloch/wordpress-core": "6.5.3"
+  }
+}
