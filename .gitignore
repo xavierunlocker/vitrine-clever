@@ -1,3 +1,12 @@
 .clever.json
 vendor/
 composer.lock
+.env
+.ddev/
+
+
+web/app/plugins/*
+!web/app/plugins/elementor-pro
+web/app/themes
+web/app/wflogs
+web/wp/
