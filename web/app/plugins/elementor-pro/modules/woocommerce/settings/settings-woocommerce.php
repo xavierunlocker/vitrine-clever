@@ -802,7 +802,8 @@ class Settings_Woocommerce extends Tab_Base {
 		$this->add_control(
 			'woocommerce_pages_notice',
 			[
-				'type' => Controls_Manager::ALERT,
+				// TODO: Remove define() with the release of Elementor 3.22
+				'type' => defined( 'Controls_Manager::ALERT' ) ? Controls_Manager::ALERT : 'alert',
 				'alert_type' => 'info',
 				'content' => esc_html__( 'Note: Changes you make here will also be reflected in the WooCommerce settings on your WP dashboard', 'elementor-pro' ),
 			]

@@ -2,7 +2,6 @@
 namespace ElementorPro\Modules\Woocommerce\Widgets;
 
 use ElementorPro\Modules\ThemeBuilder\Widgets\Post_Content;
-use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -30,7 +29,17 @@ class Product_Content extends Post_Content {
 		return 'woocommerce';
 	}
 
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
+	/**
+	 * Get style dependencies.
+	 *
+	 * Retrieve the list of style dependencies the widget requires.
+	 *
+	 * @since 3.24.0
+	 * @access public
+	 *
+	 * @return array Widget style dependencies.
+	 */
+	public function get_style_depends(): array {
+		return [ 'widget-woocommerce' ];
 	}
 }

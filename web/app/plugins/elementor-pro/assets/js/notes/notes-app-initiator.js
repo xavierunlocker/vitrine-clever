@@ -188,7 +188,7 @@ module.exports = wp.i18n;
 /******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
 /******/ 		var document = __webpack_require__.g.document;
 /******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 			if (document.currentScript)
 /******/ 				scriptUrl = document.currentScript.src;
 /******/ 			if (!scriptUrl) {
 /******/ 				var scripts = document.getElementsByTagName("script");
@@ -302,8 +302,6 @@ module.exports = wp.i18n;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
 /*!*******************************************!*\
   !*** ../assets/js/notes-app-initiator.js ***!
   \*******************************************/
@@ -328,7 +326,7 @@ __webpack_require__.r(__webpack_exports__);
     const {
       default: App
     } = await Promise.all(/*! import() | notes-app */[__webpack_require__.e("vendors-node_modules_radix-ui_react-alert-dialog_dist_index_module_js-node_modules_radix-ui_r-e4587e"), __webpack_require__.e("notes-app")]).then(__webpack_require__.bind(__webpack_require__, /*! ./app/app */ "../assets/js/app/app.js"));
-    ReactDOM.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(App, null), rootElement); // eslint-disable-line react/no-deprecated
+    ReactDOM.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(App, null), rootElement); // eslint-disable-line react/no-deprecated
   }
 
   /**
@@ -367,8 +365,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   }, '*');
 })();
-})();
-
 /******/ })()
 ;
 //# sourceMappingURL=notes-app-initiator.js.map

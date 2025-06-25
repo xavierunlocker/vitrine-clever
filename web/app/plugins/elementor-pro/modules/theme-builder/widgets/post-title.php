@@ -1,8 +1,6 @@
 <?php
 namespace ElementorPro\Modules\ThemeBuilder\Widgets;
 
-use ElementorPro\Plugin;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
@@ -30,10 +28,6 @@ class Post_Title extends Title_Widget_Base {
 		return [ 'title', 'heading', 'post' ];
 	}
 
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
-	}
-
 	protected function get_dynamic_tag_name() {
 		return 'post-title';
 	}
@@ -42,6 +36,15 @@ class Post_Title extends Title_Widget_Base {
 		return [
 			'_css_classes' => [
 				'default' => 'entry-title',
+			],
+		];
+	}
+
+	public function get_inline_css_depends() {
+		return [
+			[
+				'name' => 'heading',
+				'is_core_dependency' => true,
 			],
 		];
 	}

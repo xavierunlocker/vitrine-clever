@@ -34,8 +34,13 @@ class Post_Featured_Image extends Widget_Image {
 		return [ 'image', 'featured', 'thumbnail' ];
 	}
 
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
+	public function get_inline_css_depends() {
+		return [
+			[
+				'name' => 'image',
+				'is_core_dependency' => true,
+			],
+		];
 	}
 
 	protected function register_controls() {

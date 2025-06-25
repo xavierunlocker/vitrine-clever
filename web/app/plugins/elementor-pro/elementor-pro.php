@@ -3,18 +3,19 @@
  * Plugin Name: Elementor Pro
  * Description: Elevate your designs and unlock the full power of Elementor. Gain access to dozens of Pro widgets and kits, Theme Builder, Pop Ups, Forms and WooCommerce building capabilities.
  * Plugin URI: https://go.elementor.com/wp-dash-wp-plugins-author-uri/
- * Version: 3.29.2
  * Author: Elementor.com
+ * Version: 3.24.4
+ * Elementor tested up to: 3.23.0
  * Author URI: https://go.elementor.com/wp-dash-wp-plugins-author-uri/
+ *
  * Text Domain: elementor-pro
- * Elementor tested up to: 3.29.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'ELEMENTOR_PRO_VERSION', '3.29.2' );
+define( 'ELEMENTOR_PRO_VERSION', '3.24.4' );
 
 /**
  * All versions should be `major.minor`, without patch, in order to compare them properly.
@@ -22,8 +23,8 @@ define( 'ELEMENTOR_PRO_VERSION', '3.29.2' );
  * (e.g. Core 3.15.0-beta1 and Core 3.15.0-cloud2 should be fine when requiring 3.15, while
  * requiring 3.15.2 is not allowed)
  */
-define( 'ELEMENTOR_PRO_REQUIRED_CORE_VERSION', '3.27' );
-define( 'ELEMENTOR_PRO_RECOMMENDED_CORE_VERSION', '3.29' );
+define( 'ELEMENTOR_PRO_REQUIRED_CORE_VERSION', '3.22' );
+define( 'ELEMENTOR_PRO_RECOMMENDED_CORE_VERSION', '3.24' );
 
 define( 'ELEMENTOR_PRO__FILE__', __FILE__ );
 define( 'ELEMENTOR_PRO_PLUGIN_BASE', plugin_basename( ELEMENTOR_PRO__FILE__ ) );
@@ -34,14 +35,6 @@ define( 'ELEMENTOR_PRO_URL', plugins_url( '/', ELEMENTOR_PRO__FILE__ ) );
 define( 'ELEMENTOR_PRO_ASSETS_URL', ELEMENTOR_PRO_URL . 'assets/' );
 define( 'ELEMENTOR_PRO_MODULES_URL', ELEMENTOR_PRO_URL . 'modules/' );
 
-// Include Composer's autoloader
-if ( file_exists( ELEMENTOR_PRO_PATH . 'vendor/autoload.php' ) ) {
-	require_once ELEMENTOR_PRO_PATH . 'vendor/autoload.php';
-	// We need this file because of the DI\create function that we are using.
-	// Autoload classmap doesn't include this file.
-	require_once ELEMENTOR_PRO_PATH . 'vendor_prefixed/php-di/php-di/src/functions.php';
-}
-
 /**
  * Load gettext translate for our text domain.
  *
@@ -50,6 +43,8 @@ if ( file_exists( ELEMENTOR_PRO_PATH . 'vendor/autoload.php' ) ) {
  * @return void
  */
 function elementor_pro_load_plugin() {
+	load_plugin_textdomain( 'elementor-pro' );
+
 	if ( ! did_action( 'elementor/loaded' ) ) {
 		add_action( 'admin_notices', 'elementor_pro_fail_load' );
 

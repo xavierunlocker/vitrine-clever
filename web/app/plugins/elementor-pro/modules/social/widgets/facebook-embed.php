@@ -4,7 +4,6 @@ namespace ElementorPro\Modules\Social\Widgets;
 use Elementor\Controls_Manager;
 use ElementorPro\Base\Base_Widget;
 use ElementorPro\Modules\Social\Classes\Facebook_SDK_Manager;
-use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -36,10 +35,6 @@ class Facebook_Embed extends Base_Widget {
 		return false;
 	}
 
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
-	}
-
 	/**
 	 * Get style dependencies.
 	 *
@@ -63,19 +58,6 @@ class Facebook_Embed extends Base_Widget {
 		);
 
 		Facebook_SDK_Manager::add_app_id_control( $this );
-
-		$this->add_control(
-			'widget_exclusively_web',
-			[
-				'type' => Controls_Manager::ALERT,
-				'alert_type' => 'info',
-				'content' => sprintf(
-					esc_html__( 'Facebook post embedding is exclusively available for the web, mobile devices are not supported. %1$sLearn more%2$s', 'elementor-pro' ),
-					sprintf( '<a href="%s" target="_blank">', Facebook_SDK_Manager::FACEBOOK_PLUGINS_FAQ_URL ),
-					'</a>'
-				),
-			]
-		);
 
 		$this->add_control(
 			'type',
@@ -209,13 +191,13 @@ class Facebook_Embed extends Base_Widget {
 		$settings = $this->get_settings_for_display();
 
 		if ( empty( $settings['type'] ) ) {
-			echo esc_html__( 'Please set the embed type', 'elementor-pro' );
+			esc_html_e( 'Please set the embed type', 'elementor-pro' );
 
 			return;
 		}
 
 		if ( 'comment' === $settings['type'] && empty( $settings['comment_url'] ) || 'post' === $settings['type'] && empty( $settings['post_url'] ) || 'video' === $settings['type'] && empty( $settings['video_url'] ) ) {
-			echo esc_html__( 'Please enter a valid URL', 'elementor-pro' );
+			esc_html_e( 'Please enter a valid URL', 'elementor-pro' );
 
 			return;
 		}

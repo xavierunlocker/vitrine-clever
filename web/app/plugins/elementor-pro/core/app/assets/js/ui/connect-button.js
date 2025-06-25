@@ -42,7 +42,7 @@ ConnectButton.defaultProps = {
 	color: 'cta',
 	target: '_blank',
 	rel: 'noopener noreferrer',
-	text: __( 'Connect & Activate', 'elementor-pro' ),
+	text: __( 'Connect & Activate', 'elementor' ),
 };
 
 export default React.memo( ConnectButton );

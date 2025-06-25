@@ -43,10 +43,6 @@ class Nav_Menu extends Base_Widget {
 		return [ 'smartmenus' ];
 	}
 
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
-	}
-
 	/**
 	 * Get style dependencies.
 	 *
@@ -395,7 +391,7 @@ class Nav_Menu extends Base_Widget {
 		$this->add_control(
 			'text_align',
 			[
-				'label' => esc_html__( 'Text Align', 'elementor-pro' ),
+				'label' => esc_html__( 'Text  Align', 'elementor-pro' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'aside',
 				'options' => [
@@ -1020,7 +1016,7 @@ class Nav_Menu extends Base_Widget {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}} .elementor-nav-menu--dropdown a, {{WRAPPER}} .elementor-menu-toggle' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .elementor-nav-menu--dropdown a, {{WRAPPER}} .elementor-menu-toggle' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1054,11 +1050,9 @@ class Nav_Menu extends Base_Widget {
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-nav-menu--dropdown a:hover,
-					{{WRAPPER}} .elementor-nav-menu--dropdown a:focus,
 					{{WRAPPER}} .elementor-nav-menu--dropdown a.elementor-item-active,
 					{{WRAPPER}} .elementor-nav-menu--dropdown a.highlighted,
-					{{WRAPPER}} .elementor-menu-toggle:hover,
-					{{WRAPPER}} .elementor-menu-toggle:focus' => 'color: {{VALUE}}',
+					{{WRAPPER}} .elementor-menu-toggle:hover' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -1071,7 +1065,6 @@ class Nav_Menu extends Base_Widget {
 				'default' => '',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-nav-menu--dropdown a:hover,
-					{{WRAPPER}} .elementor-nav-menu--dropdown a:focus,
 					{{WRAPPER}} .elementor-nav-menu--dropdown a.elementor-item-active,
 					{{WRAPPER}} .elementor-nav-menu--dropdown a.highlighted' => 'background-color: {{VALUE}}',
 				],
@@ -1340,8 +1333,8 @@ class Nav_Menu extends Base_Widget {
 				'label' => esc_html__( 'Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} div.elementor-menu-toggle:hover, {{WRAPPER}} div.elementor-menu-toggle:focus' => 'color: {{VALUE}}', // Harder selector to override text color control
-					'{{WRAPPER}} div.elementor-menu-toggle:hover svg, {{WRAPPER}} div.elementor-menu-toggle:focus svg' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} div.elementor-menu-toggle:hover' => 'color: {{VALUE}}', // Harder selector to override text color control
+					'{{WRAPPER}} div.elementor-menu-toggle:hover svg' => 'fill: {{VALUE}}',
 				],
 			]
 		);
@@ -1352,7 +1345,7 @@ class Nav_Menu extends Base_Widget {
 				'label' => esc_html__( 'Background Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-menu-toggle:hover, {{WRAPPER}} .elementor-menu-toggle:focus' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .elementor-menu-toggle:hover' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -1589,7 +1582,7 @@ class Nav_Menu extends Base_Widget {
 			'class' => 'elementor-menu-toggle',
 			'role' => 'button',
 			'tabindex' => '0',
-			'aria-label' => esc_attr__( 'Menu Toggle', 'elementor-pro' ),
+			'aria-label' => esc_html__( 'Menu Toggle', 'elementor-pro' ),
 			'aria-expanded' => 'false',
 		] );
 
@@ -1661,6 +1654,7 @@ class Nav_Menu extends Base_Widget {
 				echo '</span>';
 			}
 			?>
+			<span class="elementor-screen-only"><?php echo esc_html__( 'Menu', 'elementor-pro' ); ?></span>
 		</div>
 		<?php
 	}

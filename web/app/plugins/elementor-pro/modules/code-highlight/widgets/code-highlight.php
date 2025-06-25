@@ -29,15 +29,11 @@ class Code_Highlight extends Base_Widget {
 	}
 
 	public function get_style_depends() {
-		return [ 'widget-code-highlight' ];
+		return [ 'prismjs_style' ];
 	}
 
 	protected function is_dynamic_content(): bool {
 		return false;
-	}
-
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
 	}
 
 	public function get_script_depends() {
@@ -68,6 +64,16 @@ class Code_Highlight extends Base_Widget {
 		}
 
 		return array_keys( $depends );
+	}
+
+	public function get_css_config() {
+		// This widget is loading its own CSS using get_style_depends.
+		return [
+			'key' => $this->get_group_name(),
+			'version' => ELEMENTOR_PRO_VERSION,
+			'file_path' => '',
+			'data' => [],
+		];
 	}
 
 	protected function register_controls() {

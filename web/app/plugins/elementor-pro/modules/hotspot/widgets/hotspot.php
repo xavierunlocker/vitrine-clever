@@ -13,7 +13,6 @@ use Elementor\Icons_Manager;
 use Elementor\Utils;
 use Elementor\Widget_Image;
 use ElementorPro\Base\Base_Widget_Trait;
-use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -40,10 +39,6 @@ class Hotspot extends Widget_Image {
 
 	protected function is_dynamic_content(): bool {
 		return false;
-	}
-
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
 	}
 
 	/**
@@ -270,7 +265,7 @@ class Hotspot extends Widget_Image {
 		$repeater->start_controls_tab(
 			'hotspot_position_tab',
 			[
-				'label' => esc_html__( 'Position', 'elementor-pro' ),
+				'label' => esc_html__( 'POSITION', 'elementor-pro' ),
 			]
 		);
 

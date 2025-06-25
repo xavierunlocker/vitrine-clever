@@ -24,7 +24,6 @@
 				spacer: 'sticky-spacer',
 			},
 			isRTL: false,
-			isScrollSnapActive: false,
 			handleScrollbarWidth: false,
 		};
 
@@ -32,7 +31,6 @@
 			$element = $( element ).addClass( settings.classes.sticky );
 
 			elements.$window = $( window );
-			elements.$body = $( document ).find( 'body' );
 
 			if ( settings.parent ) {
 				elements.$parent = $element.parent();
@@ -48,21 +46,16 @@
 		};
 
 		var bindEvents = function() {
-			elements.$window.on( 'resize', onWindowResize );
-
-			if ( settings.isScrollSnapActive ) {
-				elements.$body.on( 'scroll', onWindowScroll );
-			} else {
-				elements.$window.on( 'scroll', onWindowScroll );
-			}
+			elements.$window.on( {
+				scroll: onWindowScroll,
+				resize: onWindowResize,
+			} );
 		};
 
 		var unbindEvents = function() {
 			elements.$window
 				.off( 'scroll', onWindowScroll )
 				.off( 'resize', onWindowResize );
-
-			elements.$body.off( 'scroll', onWindowScroll );
 		};
 
 		var init = function() {

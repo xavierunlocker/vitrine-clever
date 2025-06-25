@@ -39,15 +39,6 @@ abstract class Base extends Base_Widget {
 			]
 		);
 
-		$this->add_control(
-			'slides_name',
-			[
-				'label' => esc_html__( 'Slides Name', 'elementor-pro' ),
-				'type' => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Slides', 'elementor-pro' ),
-			]
-		);
-
 		$repeater = new Repeater();
 
 		$this->add_repeater_controls( $repeater );
@@ -291,7 +282,7 @@ abstract class Base extends Base_Widget {
 		$this->add_control(
 			'lazyload',
 			[
-				'label' => esc_html__( 'Lazy Load', 'elementor-pro' ),
+				'label' => esc_html__( 'Lazyload', 'elementor-pro' ),
 				'type' => Controls_Manager::SWITCHER,
 				'separator' => 'before',
 				'frontend_available' => true,
@@ -491,25 +482,7 @@ abstract class Base extends Base_Widget {
 			]
 		);
 
-		$this->add_responsive_control(
-			'pagination_gap',
-			[
-				'label' => esc_html__( 'Space Between Dots', 'elementor-pro' ),
-				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', 'em', 'rem', 'custom' ],
-				'range' => [
-					'px' => [
-						'max' => 50,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .swiper-pagination-bullet' => '--swiper-pagination-bullet-horizontal-gap: {{SIZE}}{{UNIT}}; --swiper-pagination-bullet-vertical-gap: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'pagination' => 'bullets',
-				],
-			]
-		);
+		$swiper_class = Plugin::elementor()->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
 
 		$this->add_responsive_control(
 			'pagination_size',
@@ -530,7 +503,8 @@ abstract class Base extends Base_Widget {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .swiper-pagination-bullet' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .swiper-horizontal .swiper-pagination-progressbar' => 'height: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .' . $swiper_class . '-horizontal .swiper-pagination-progressbar' => 'height: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .swiper-pagination-fraction' => 'font-size: {{SIZE}}{{UNIT}}',
 				],
 				'condition' => [
 					'pagination!' => '',
@@ -565,7 +539,6 @@ abstract class Base extends Base_Widget {
 				'condition' => [
 					'pagination!' => '',
 				],
-				'control_type' => 'content',
 			]
 		);
 
@@ -585,48 +558,37 @@ abstract class Base extends Base_Widget {
 		$settings = array_merge( $default_settings, $settings );
 
 		$slides_count = count( $settings['slides'] );
-		$optimized_markup = Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
-
-		$this->add_render_attribute( [
-			'wrapper' => [
-				'class' => [ $settings['container_class'], 'swiper' ],
-				'role' => 'region',
-				'aria-roledescription' => 'carousel',
-				'aria-label' => $settings['slides_name'],
-			],
-		] );
+		$swiper_class = Plugin::elementor()->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
 		?>
-		<?php if ( ! $optimized_markup ) : ?>
 		<div class="elementor-swiper">
-		<?php endif; ?>
-			<div <?php $this->print_render_attribute_string( 'wrapper' ); ?>>
+			<div class="<?php echo esc_attr( $settings['container_class'] ); ?> <?php echo esc_attr( $swiper_class ); ?>">
 				<div class="swiper-wrapper">
 					<?php
 					foreach ( $settings['slides'] as $index => $slide ) :
 						$this->slide_prints_count++;
 						?>
-						<div class="swiper-slide" role="group" aria-roledescription="slide">
+						<div class="swiper-slide">
 							<?php $this->print_slide( $slide, $settings, 'slide-' . $index . '-' . $this->slide_prints_count ); ?>
 						</div>
 					<?php endforeach; ?>
 				</div>
 				<?php if ( 1 < $slides_count ) : ?>
-					<?php if ( $settings['show_arrows'] ) : ?>
-						<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0" aria-label="<?php echo esc_attr__( 'Previous', 'elementor-pro' ); ?>">
-							<?php $this->render_swiper_button( 'previous' ); ?>
-						</div>
-						<div class="elementor-swiper-button elementor-swiper-button-next" role="button" tabindex="0" aria-label="<?php echo esc_attr__( 'Next', 'elementor-pro' ); ?>">
-							<?php $this->render_swiper_button( 'next' ); ?>
-						</div>
-					<?php endif; ?>
 					<?php if ( $settings['pagination'] ) : ?>
 						<div class="swiper-pagination"></div>
 					<?php endif; ?>
+					<?php if ( $settings['show_arrows'] ) : ?>
+						<div class="elementor-swiper-button elementor-swiper-button-prev" role="button" tabindex="0">
+							<?php $this->render_swiper_button( 'previous' ); ?>
+							<span class="elementor-screen-only"><?php echo esc_html__( 'Previous', 'elementor-pro' ); ?></span>
+						</div>
+						<div class="elementor-swiper-button elementor-swiper-button-next" role="button" tabindex="0">
+							<?php $this->render_swiper_button( 'next' ); ?>
+							<span class="elementor-screen-only"><?php echo esc_html__( 'Next', 'elementor-pro' ); ?></span>
+						</div>
+					<?php endif; ?>
 				<?php endif; ?>
 			</div>
-		<?php if ( ! $optimized_markup ) : ?>
 		</div>
-		<?php endif; ?>
 		<?php
 	}
 

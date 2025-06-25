@@ -11,7 +11,6 @@ use Elementor\Group_Control_Background;
 use ElementorPro\Modules\Woocommerce\Module;
 use Elementor\Utils;
 use Elementor\Group_Control_Image_Size;
-use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -35,10 +34,6 @@ class Menu_Cart extends Base_Widget {
 		return [ 'theme-elements', 'woocommerce-elements' ];
 	}
 
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
-	}
-
 	/**
 	 * Get style dependencies.
 	 *
@@ -50,7 +45,7 @@ class Menu_Cart extends Base_Widget {
 	 * @return array Widget style dependencies.
 	 */
 	public function get_style_depends(): array {
-		return [ 'widget-woocommerce-menu-cart' ];
+		return [ 'widget-woocommerce' ];
 	}
 
 	protected function register_controls() {

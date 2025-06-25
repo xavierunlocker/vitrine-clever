@@ -168,7 +168,10 @@ class Link_In_Bio_Var_7 extends Widget_Link_In_Bio_Base_Pro {
 			[
 				'type' => Controls_Manager::ALERT,
 				'alert_type' => 'info',
-				'content' => esc_html__( 'Upload your card in .vcf format', 'elementor-pro' ),
+				'content' => sprintf(
+					__( 'Upload your card in .vcf format', 'elementor-pro' ),
+					4
+				),
 				'condition' => [
 					'cta_link_type' => Social_Network_Provider::VCF,
 				],

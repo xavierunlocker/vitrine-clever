@@ -10,7 +10,6 @@ use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Modules\PageTemplates\Module as PageTemplatesModule;
 use ElementorPro\Base\Base_Widget;
-use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -40,10 +39,6 @@ class ProgressTracker extends Base_Widget {
 
 	protected function is_dynamic_content(): bool {
 		return false;
-	}
-
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
 	}
 
 	/**
@@ -324,11 +319,11 @@ class ProgressTracker extends Base_Widget {
 				'default' => 'none',
 				'options' => [
 					'none' => esc_html__( 'None', 'elementor-pro' ),
-					'solid' => esc_html__( 'Solid', 'elementor-pro' ),
-					'double' => esc_html__( 'Double', 'elementor-pro' ),
-					'dotted' => esc_html__( 'Dotted', 'elementor-pro' ),
-					'dashed' => esc_html__( 'Dashed', 'elementor-pro' ),
-					'groove' => esc_html__( 'Groove', 'elementor-pro' ),
+					'solid' => _x( 'Solid', 'Border Control', 'elementor-pro' ),
+					'double' => _x( 'Double', 'Border Control', 'elementor-pro' ),
+					'dotted' => _x( 'Dotted', 'Border Control', 'elementor-pro' ),
+					'dashed' => _x( 'Dashed', 'Border Control', 'elementor-pro' ),
+					'groove' => _x( 'Groove', 'Border Control', 'elementor-pro' ),
 				],
 				'selectors' => [
 					'{{WRAPPER}}' => '--horizontal-progress-border: {{VALUE}};',
@@ -486,11 +481,11 @@ class ProgressTracker extends Base_Widget {
 				'default' => 'none',
 				'options' => [
 					'none' => esc_html__( 'None', 'elementor-pro' ),
-					'solid' => esc_html__( 'Solid', 'elementor-pro' ),
-					'double' => esc_html__( 'Double', 'elementor-pro' ),
-					'dotted' => esc_html__( 'Dotted', 'elementor-pro' ),
-					'dashed' => esc_html__( 'Dashed', 'elementor-pro' ),
-					'groove' => esc_html__( 'Groove', 'elementor-pro' ),
+					'solid' => _x( 'Solid', 'Border Control', 'elementor-pro' ),
+					'double' => _x( 'Double', 'Border Control', 'elementor-pro' ),
+					'dotted' => _x( 'Dotted', 'Border Control', 'elementor-pro' ),
+					'dashed' => _x( 'Dashed', 'Border Control', 'elementor-pro' ),
+					'groove' => _x( 'Groove', 'Border Control', 'elementor-pro' ),
 				],
 				'selectors' => [
 					'{{WRAPPER}}' => '--horizontal-border-style: {{VALUE}};',

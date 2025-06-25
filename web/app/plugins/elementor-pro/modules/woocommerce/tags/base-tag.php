@@ -22,12 +22,4 @@ abstract class Base_Tag extends Tag {
 	public function get_categories() {
 		return [ \Elementor\Modules\DynamicTags\Module::TEXT_CATEGORY ];
 	}
-
-	public function get_editor_config() {
-		$conf = parent::get_editor_config();
-
-		$conf['force_convert_to_atomic'] = true;
-
-		return $conf;
-	}
 }

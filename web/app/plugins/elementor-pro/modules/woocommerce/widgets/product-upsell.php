@@ -5,7 +5,6 @@ use Elementor\Controls_Manager;
 use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Typography;
-use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -29,10 +28,6 @@ class Product_Upsell extends Products_Base {
 		return [ 'woocommerce', 'shop', 'store', 'upsell', 'product' ];
 	}
 
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
-	}
-
 	/**
 	 * Get style dependencies.
 	 *
@@ -44,7 +39,7 @@ class Product_Upsell extends Products_Base {
 	 * @return array Widget style dependencies.
 	 */
 	public function get_style_depends(): array {
-		return [ 'widget-woocommerce-products' ];
+		return [ 'widget-woocommerce' ];
 	}
 
 	protected function register_controls() {

@@ -3,7 +3,6 @@ namespace ElementorPro\Modules\Woocommerce\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Typography;
-use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -23,10 +22,6 @@ class Product_Additional_Information extends Base_Widget {
 		return ' eicon-product-info';
 	}
 
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
-	}
-
 	/**
 	 * Get style dependencies.
 	 *
@@ -38,7 +33,7 @@ class Product_Additional_Information extends Base_Widget {
 	 * @return array Widget style dependencies.
 	 */
 	public function get_style_depends(): array {
-		return [ 'widget-woocommerce-product-additional-information' ];
+		return [ 'widget-woocommerce' ];
 	}
 
 	protected function register_controls() {

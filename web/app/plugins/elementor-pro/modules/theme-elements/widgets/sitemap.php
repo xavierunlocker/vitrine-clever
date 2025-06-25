@@ -9,7 +9,6 @@ use Elementor\Repeater;
 use Elementor\Group_Control_Typography;
 use Elementor\Utils;
 use ElementorPro\Core\Utils as Pro_Utils;
-use ElementorPro\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -39,10 +38,6 @@ class Sitemap extends Base {
 		return [ 'taxonomy', 'custom post type', 'cpt', 'sitemap', 'site map', 'link', 'menu', 'tree' ];
 	}
 
-	public function has_widget_inner_wrapper(): bool {
-		return ! Plugin::elementor()->experiments->is_feature_active( 'e_optimized_markup' );
-	}
-
 	/**
 	 * Get style dependencies.
 	 *
@@ -54,7 +49,7 @@ class Sitemap extends Base {
 	 * @return array Widget style dependencies.
 	 */
 	public function get_style_depends(): array {
-		return [ 'widget-sitemap' ];
+		return [ 'widget-theme-elements' ];
 	}
 
 	private function register_sitemap_tab() {
@@ -145,12 +140,12 @@ class Sitemap extends Base {
 				'tablet_default' => '2',
 				'mobile_default' => '1',
 				'options' => [
-					'1' => esc_html__( '1', 'elementor-pro' ),
-					'2' => esc_html__( '2', 'elementor-pro' ),
-					'3' => esc_html__( '3', 'elementor-pro' ),
-					'4' => esc_html__( '4', 'elementor-pro' ),
-					'5' => esc_html__( '5', 'elementor-pro' ),
-					'6' => esc_html__( '6', 'elementor-pro' ),
+					'1' => '1',
+					'2' => '2',
+					'3' => '3',
+					'4' => '4',
+					'5' => '5',
+					'6' => '6',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-sitemap-section' => 'flex-basis: calc( 1 / {{VALUE}} * 100% );',
@@ -330,12 +325,12 @@ class Sitemap extends Base {
 				'default' => '0',
 				'options' => [
 					'0' => esc_html__( 'All', 'elementor-pro' ),
-					'1' => esc_html__( '1', 'elementor-pro' ),
-					'2' => esc_html__( '2', 'elementor-pro' ),
-					'3' => esc_html__( '3', 'elementor-pro' ),
-					'4' => esc_html__( '4', 'elementor-pro' ),
-					'5' => esc_html__( '5', 'elementor-pro' ),
-					'6' => esc_html__( '6', 'elementor-pro' ),
+					'1' => 1,
+					'2' => 2,
+					'3' => 3,
+					'4' => 4,
+					'5' => 5,
+					'6' => 6,
 				],
 				'condition' => [
 					'sitemap_hierarchical' => 'yes',
