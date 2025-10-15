@@ -7,6 +7,7 @@ composer.lock
 
 web/app/plugins/*
 !web/app/plugins/elementor-pro
+!web/app/plugins/formidable
 web/app/themes
 web/app/wflogs
 web/wp/
