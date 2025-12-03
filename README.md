@@ -6,7 +6,8 @@
 
 Now you can take advantages of both to have your [WordPress](https://wordpress.org) installed on it. While you can follow basic steps to install BedRock yourself on CleverCloud, here is a nice shortcut that you can just fork and deploy.
 
-## How it works?
+## How it works? 
+
 
 Composer is a PHP dependency manager that allows you to manage your Wordpress install and plugins with improved dependency management and more reliable development than vanilla Wordpress. It's similar to putting Worpdress in its own subdirectory, but with easier configuration. Isolated web root enhances security by limiting access to non-web files, while vanilla WordPress structure the whole configuration on the same root.
 
