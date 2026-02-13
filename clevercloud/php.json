@@ -1,5 +1,8 @@
 {
   "deploy": {
     "webroot": "/web"
+  },
+  "configuration": {
+    "memory_limit": "256M"
   }
 }
