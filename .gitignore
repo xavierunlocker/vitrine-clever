@@ -2,6 +2,7 @@
 vendor/
 composer.lock
 .env
+.claude/
 .ddev/
 
 
@@ -11,3 +12,5 @@ web/app/plugins/*
 web/app/themes
 web/app/wflogs
 web/wp/
+
+/CLAUDE.local.md
