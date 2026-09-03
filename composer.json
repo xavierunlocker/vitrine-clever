@@ -43,6 +43,7 @@
     "wpackagist-plugin/cookie-law-info": "^3.3.9.1",
     "wpackagist-plugin/custom-fonts": "^2.1.16",
     "wpackagist-plugin/elementor": "^3.34.1",
+    "wpackagist-plugin/formidable": "^6.34",
     "wpackagist-plugin/google-site-kit": "^1.170.0",
     "wpackagist-plugin/jeg-elementor-kit": "^3.0.2",
     "wpackagist-plugin/mailgun": "^2.1.10",
