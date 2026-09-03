@@ -27,11 +27,19 @@
     {
       "type": "composer",
       "url": "https://wpackagist.org"
+    },
+    {
+      "type": "composer",
+      "url": "https://composer.elementor.com",
+      "only": [
+        "elementor/elementor-pro"
+      ]
     }
   ],
   "require": {
     "php": ">=7.1",
     "composer/installers": "^2.2",
+    "elementor/elementor-pro": "3.24.4",
     "humanmade/s3-uploads": "~3.0",
     "oscarotero/env": "^2.1.0",
     "roots/wordpress": "^6.6",
