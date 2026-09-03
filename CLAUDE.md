@@ -86,3 +86,21 @@ vitrine-clever/
 **NEVER** run a global `composer update`. Instead, update each package independently like that : `composer require wpackagist-plugin/the-plus-addons-for-elementor-page-builder:^1.2`.
 **ALWAYS** provide a specific version for the update.
 **Do not** commit the `composer.lock` file. It is automatically generated on Clever Cloud deployment.
+
+## Repository & deployment chain
+
+This repository lives at **`unlocker-io/vitrine-clever`**. It was transferred from a
+personal account on 2026-09-03; the repository ID was preserved, so the Clever Cloud
+webhook and the deploy chain followed the transfer untouched.
+
+The Clever Cloud application `[Production] vitrine-clever`
+(`app_c7936b6d-5d16-4908-9f68-7c9bb0eea15f`) still stores the **pre-transfer** GitHub URL
+in its read-only "GitHub repository URL" field. That is expected: GitHub permanently
+redirects the old path to this repository, and `git clone` / `git fetch` follow that
+redirect. The field cannot be edited — neither the API nor the console allows repointing a
+GitHub-linked application.
+
+**Never recreate a repository named `vitrine-clever` under the former personal account.**
+Doing so cancels the GitHub redirect in favour of that new repository, and Clever Cloud
+would silently start deploying it — no error, no alert, just the site vanishing on the
+next build.
